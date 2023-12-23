@@ -20,7 +20,7 @@
 }
 
 .__user-message {
-  background-color: #525252;
+  background-color: #383838;
   border-radius: 0.3rem;
   padding-inline: 1rem;
   padding-block: 0.7rem;
@@ -29,7 +29,7 @@
 }
 
 .__model-response {
-  background-color: #191919;
+  background-color: #202020;
   margin-right: auto;
 }
 
@@ -102,9 +102,20 @@
   }
 }
 
-pre,
 code {
-  background-color: #303030;
+  background-color: #383838;
   padding: 0.2em;
-  border-radius: 0.2em;
+  border-radius: 0.2rem;
+}
+
+pre {
+  background-color: #151515;
+  padding-inline: 1em;
+  padding-block: 0.6em;
+  border-radius: 0.5rem;
+}
+
+pre code {
+  background-color: #151515;
+  padding: 0;
 }
