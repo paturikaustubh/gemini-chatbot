@@ -16,9 +16,6 @@ export function useAiResponse() {
 
     const chat = model.startChat({
       history: chatSequence,
-      generationConfig: {
-        maxOutputTokens: 999999999,
-      },
     });
 
     const result = await chat.sendMessage(msg).catch((e) => {
