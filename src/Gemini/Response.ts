@@ -35,7 +35,7 @@ export function useAiResponse() {
         {
           role: "model",
           parts:
-            "Cannot generate a response. Your message violates our guidelines.",
+            "Cannot generate a response. Your message violates our guidelines. ",
         },
       ]);
     }
