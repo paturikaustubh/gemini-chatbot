@@ -7,7 +7,8 @@ import "./styles.css";
 import Markdown from "react-markdown";
 export function Conversation() {
   const sendMessage = useAiResponse();
-  const { chatSequence, setChatSequence } = useContext(ChatContext);
+  const { chatSequence, setChatSequence, disableSend, setDisableSend } =
+    useContext(ChatContext);
 
   const textAreaRef = useRef<null | HTMLTextAreaElement>(null);
   const [userInputValue, setUserInputValue] = useState<string | undefined>();
@@ -19,6 +20,7 @@ export function Conversation() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (textAreaRef.current?.value) {
+      setDisableSend(true);
       textAreaRef.current.style.height = "30px";
       const textAreaValue: string = textAreaRef.current.value.toString();
       sendMessage(textAreaValue);
@@ -65,7 +67,7 @@ export function Conversation() {
                 handleSubmit(e);
             }}
           />
-          <button disabled={!Boolean(userInputValue)}>
+          <button disabled={!Boolean(userInputValue) || disableSend}>
             <span className="material-symbols-rounded">send</span>
           </button>
         </form>

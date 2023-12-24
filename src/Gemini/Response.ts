@@ -6,7 +6,8 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 // Access your API key as an environment variable (see "Set up your API key" above)
 
 export function useAiResponse() {
-  const { chatSequence, setChatSequence } = useContext(ChatContext);
+  const { chatSequence, setChatSequence, setDisableSend } =
+    useContext(ChatContext);
   const genAI = new GoogleGenerativeAI(
     "AIzaSyApOcN3i2jU26amZ86Sv3bpe327G92MpEk"
   );
@@ -29,15 +30,17 @@ export function useAiResponse() {
         ...prevVals,
         { role: "model", parts: text },
       ]);
+      setDisableSend(false);
     } catch (e) {
       setChatSequence((prevVals) => [
         ...prevVals,
         {
           role: "model",
           parts:
-            "Cannot generate a response. Your message violates our guidelines. ",
+            "Cannot generate a response. Your message violates our guidelines.",
         },
       ]);
+      setDisableSend(false);
     }
   };
 }
