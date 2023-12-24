@@ -4,24 +4,24 @@ import { InputContent } from "@google/generative-ai"; // replace with the path t
 interface ChatContext {
   chatSequence: InputContent[];
   setChatSequence: React.Dispatch<React.SetStateAction<InputContent[]>>;
-  disableSend: boolean;
-  setDisableSend: React.Dispatch<React.SetStateAction<boolean>>;
+  showLoading: boolean;
+  setShowLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ChatContext = createContext<ChatContext>({
   chatSequence: [],
   setChatSequence: () => {},
-  disableSend: false,
-  setDisableSend: () => {},
+  showLoading: false,
+  setShowLoading: () => {},
 });
 
 export const ChatSequence = ({ children }: { children: any }) => {
   const [chatSequence, setChatSequence] = useState<InputContent[]>([]);
-  const [disableSend, setDisableSend] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
 
   return (
     <ChatContext.Provider
-      value={{ chatSequence, setChatSequence, disableSend, setDisableSend }}
+      value={{ chatSequence, setChatSequence, showLoading, setShowLoading }}
     >
       {children}
     </ChatContext.Provider>
