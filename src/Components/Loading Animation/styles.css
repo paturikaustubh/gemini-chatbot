@@ -1,8 +1,11 @@
 .__loading {
   display: flex;
-  width: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 37px;
+  height: 37px;
   aspect-ratio: 1/1;
-  border: 0.3rem solid #151515;
+  border: 0.3rem solid #232323;
   border-top-color: #ff822d;
   border-radius: 50%;
   animation: rotate 1s infinite ease-in-out;

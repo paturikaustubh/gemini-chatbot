@@ -68,13 +68,13 @@ export function Conversation() {
                 handleSubmit(e);
             }}
           />
-          <button disabled={!Boolean(userInputValue) || showLoading}>
-            {!showLoading ? (
+          {!showLoading ? (
+            <button disabled={!Boolean(userInputValue) || showLoading}>
               <span className="material-symbols-rounded">send</span>
-            ) : (
-              <Loading />
-            )}
-          </button>
+            </button>
+          ) : (
+            <Loading />
+          )}
         </form>
       </div>
     </>

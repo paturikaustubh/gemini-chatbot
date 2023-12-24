@@ -32,12 +32,13 @@ export function useAiResponse() {
       ]);
       setShowLoading(false);
     } catch (e) {
+      console.error(e);
+
       setChatSequence((prevVals) => [
         ...prevVals,
         {
           role: "model",
-          parts:
-            "Cannot generate a response. Your message violates our guidelines.",
+          parts: "Text not available. Response was blocked due to SAFETY",
         },
       ]);
       setShowLoading(false);
