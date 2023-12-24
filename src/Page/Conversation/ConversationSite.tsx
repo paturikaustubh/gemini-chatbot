@@ -5,9 +5,10 @@ import { useAiResponse } from "../../Gemini/Response";
 
 import "./styles.css";
 import Markdown from "react-markdown";
+import { Loading } from "../../Components/Loading Animation/Loading";
 export function Conversation() {
   const sendMessage = useAiResponse();
-  const { chatSequence, setChatSequence, disableSend, setDisableSend } =
+  const { chatSequence, setChatSequence, showLoading, setShowLoading } =
     useContext(ChatContext);
 
   const textAreaRef = useRef<null | HTMLTextAreaElement>(null);
@@ -20,7 +21,7 @@ export function Conversation() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (textAreaRef.current?.value) {
-      setDisableSend(true);
+      setShowLoading(true);
       textAreaRef.current.style.height = "30px";
       const textAreaValue: string = textAreaRef.current.value.toString();
       sendMessage(textAreaValue);
@@ -67,8 +68,12 @@ export function Conversation() {
                 handleSubmit(e);
             }}
           />
-          <button disabled={!Boolean(userInputValue) || disableSend}>
-            <span className="material-symbols-rounded">send</span>
+          <button disabled={!Boolean(userInputValue) || showLoading}>
+            {!showLoading ? (
+              <span className="material-symbols-rounded">send</span>
+            ) : (
+              <Loading />
+            )}
           </button>
         </form>
       </div>
