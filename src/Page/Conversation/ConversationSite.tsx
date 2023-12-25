@@ -1,11 +1,12 @@
 import { useRef, useState, useContext, useEffect } from "react";
+import Markdown from "react-markdown";
 
 import { ChatContext } from "../../Data/Context";
 import { useAiResponse } from "../../Gemini/Response";
-
-import "./styles.css";
-import Markdown from "react-markdown";
 import { Loading } from "../../Components/Loading Animation/Loading";
+import "./styles.css";
+import Logo from "/Gemini Logo No BG.png";
+
 export function Conversation() {
   const sendMessage = useAiResponse();
   const { chatSequence, setChatSequence, showLoading, setShowLoading } =
@@ -37,29 +38,54 @@ export function Conversation() {
   return (
     <>
       <div className="__chat-body-container">
-        {chatSequence.map((message, indx) =>
-          // <div
-          //   className={
-          //     message.role === "user" ? "__user-message" : "__model-response"
-          //   }
-          //   key={indx}
-          // >
-          //   <Markdown>{message.parts.toString()}</Markdown>
-          // </div>
-          message.role === "user" ? (
-            <div className={"__user-message"} key={indx}>
-              {message.parts.toString()}
-            </div>
-          ) : (
-            <div
-              className={
-                message.role === "user" ? "__user-message" : "__model-response"
-              }
-              key={indx}
-            >
-              <Markdown>{message.parts.toString()}</Markdown>
-            </div>
+        {chatSequence.length > 0 ? (
+          chatSequence.map((message, indx) =>
+            message.role === "user" ? (
+              <div className={"__user-message"} key={indx}>
+                {message.parts.toString()}
+              </div>
+            ) : (
+              <div
+                className={
+                  message.role === "user"
+                    ? "__user-message"
+                    : "__model-response"
+                }
+                key={indx}
+              >
+                <Markdown>{message.parts.toString()}</Markdown>
+              </div>
+            )
           )
+        ) : (
+          <div
+            className="__blank-screen-fill"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem",
+              marginTop: 12,
+            }}
+          >
+            <img src={Logo} alt="Gemini Logo" width={"250rem"} />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <span style={{ fontWeight: 500, fontSize: "1.3rem" }}>
+                Gemini at your service.
+              </span>
+              <span
+                style={{ fontWeight: 500, color: "rgba(227, 227, 227, 0.5)" }}
+              >
+                How can I help you today?
+              </span>
+            </div>
+          </div>
         )}
       </div>
       <div className="__input-container">
