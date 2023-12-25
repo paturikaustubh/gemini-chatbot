@@ -37,16 +37,30 @@ export function Conversation() {
   return (
     <>
       <div className="__chat-body-container">
-        {chatSequence.map((message, indx) => (
-          <div
-            className={
-              message.role === "user" ? "__user-message" : "__model-response"
-            }
-            key={indx}
-          >
-            <Markdown>{message.parts.toString()}</Markdown>
-          </div>
-        ))}
+        {chatSequence.map((message, indx) =>
+          // <div
+          //   className={
+          //     message.role === "user" ? "__user-message" : "__model-response"
+          //   }
+          //   key={indx}
+          // >
+          //   <Markdown>{message.parts.toString()}</Markdown>
+          // </div>
+          message.role === "user" ? (
+            <div className={"__user-message"} key={indx}>
+              {message.parts.toString()}
+            </div>
+          ) : (
+            <div
+              className={
+                message.role === "user" ? "__user-message" : "__model-response"
+              }
+              key={indx}
+            >
+              <Markdown>{message.parts.toString()}</Markdown>
+            </div>
+          )
+        )}
       </div>
       <div className="__input-container">
         <form className="__input-field" onSubmit={handleSubmit}>

@@ -27,7 +27,7 @@ html {
 
 ::-webkit-scrollbar {
   width: 0.5rem;
-  height: 0.5rem;
+  height: 0.3rem;
   transition-duration: 300ms;
   position: absolute;
   top: 0;
