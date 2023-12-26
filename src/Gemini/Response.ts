@@ -1,7 +1,11 @@
 import { useContext } from "react";
 
 import { ChatContext } from "../Data/Context";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import {
+  GoogleGenerativeAI,
+  HarmBlockThreshold,
+  HarmCategory,
+} from "@google/generative-ai";
 
 // Access your API key as an environment variable (see "Set up your API key" above)
 
@@ -13,7 +17,15 @@ export function useAiResponse() {
   );
 
   return async function aiMesage(msg: string) {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({
+      model: "gemini-pro",
+      safetySettings: [
+        {
+          category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+          threshold: HarmBlockThreshold.BLOCK_NONE,
+        },
+      ],
+    });
 
     const chat = model.startChat({
       history: chatSequence,
