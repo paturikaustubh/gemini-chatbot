@@ -27,9 +27,8 @@
 .__user-message {
   background-color: #383838;
   margin-left: auto;
-  padding-block: 0.5rem;
+  white-space: pre-line;
 }
-
 /* .__user-message > *, */
 /* .__model-response > * {
   margin: 0.3rem;
