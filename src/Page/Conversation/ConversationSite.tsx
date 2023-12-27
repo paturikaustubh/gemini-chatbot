@@ -42,7 +42,7 @@ export function Conversation() {
           chatSequence.map((message, indx) =>
             message.role === "user" ? (
               <div className={"__user-message"} key={indx}>
-                {message.parts.toString()}
+                <p>{message.parts.toString()}</p>
               </div>
             ) : (
               <div
