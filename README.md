@@ -1,30 +1,17 @@
-# React + TypeScript + Vite
+# Gemini Chatbot 🤖
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Gemini Chatbot is a fully responsive web application built using React and TypeScript. This application provides a conversational interface for users, leveraging the power of Google Gemini's API 💪🏻.
 
-Currently, two official plugins are available:
+Experience the application from [here](paturikaustubh.github.io/gemini-chatbot/) ⚡.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features ✨
 
-## Expanding the ESLint configuration
+- Conversational interface: Interact with the chatbot in a natural, conversational manner.
+- Real-time responses: Get instant responses from the chatbot.
+- Powered by Google Gemini's API: Leverages Google's powerful natural language processing capabilities.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Contributing 🫱🏻‍🫲🏿
 
-- Configure the top-level `parserOptions` property like this:
+Any suggestions/contributions are welcome! You can create a pull request to add a new feature or make any changes/adjustments. It would really help if we together can make this a much better application.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+*This is not the final version of the application. New developments will be made eventually.*
