@@ -16,7 +16,8 @@ export function Conversation() {
   const [userInputValue, setUserInputValue] = useState<string | undefined>();
 
   useEffect(() => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight)
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   }, [chatSequence]);
 
   const handleSubmit = (e: any) => {
@@ -37,7 +38,7 @@ export function Conversation() {
 
   return (
     <>
-      <div className="__chat-body-container">
+      <section className="__chat-body-container">
         {chatSequence.length > 0 ? (
           chatSequence.map((message, indx) =>
             message.role === "user" ? (
@@ -87,35 +88,70 @@ export function Conversation() {
             </div>
           </div>
         )}
-      </div>
+      </section>
       <div className="__input-container">
-        <form className="__input-field" onSubmit={handleSubmit}>
-          <textarea
-            id="__user-input-field"
-            autoFocus
-            placeholder="Start typing..."
-            ref={textAreaRef}
-            onInput={() => {
-              if (textAreaRef.current) {
-                textAreaRef.current.style.height = "30px";
-                textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
-              }
-              setUserInputValue(textAreaRef.current?.value);
-            }}
-            className="__input-class"
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey && !e.ctrlKey)
-                handleSubmit(e);
-            }}
-          />
-          {!showLoading ? (
-            <button disabled={!Boolean(userInputValue) || showLoading}>
-              <span className="material-symbols-rounded">send</span>
-            </button>
-          ) : (
-            <Loading />
-          )}
-        </form>
+        <div
+          style={{
+            backdropFilter: "blur(3px)",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: "0.2rem",
+            paddingTop: "0.3rem",
+          }}
+        >
+          <form className="__input-field" onSubmit={handleSubmit}>
+            <textarea
+              id="__user-input-field"
+              autoFocus
+              placeholder="Start typing..."
+              ref={textAreaRef}
+              onInput={() => {
+                if (textAreaRef.current) {
+                  textAreaRef.current.style.height = "30px";
+                  textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
+                }
+                setUserInputValue(textAreaRef.current?.value);
+              }}
+              className="__input-class"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey && !e.ctrlKey)
+                  handleSubmit(e);
+              }}
+            />
+            {!showLoading ? (
+              <button disabled={!Boolean(userInputValue) || showLoading}>
+                <span className="material-symbols-rounded">send</span>
+              </button>
+            ) : (
+              <Loading />
+            )}
+          </form>
+          <div style={{ fontSize: "0.8rem", marginBlock: "5px" }}>
+            Developed by Kaustubh Paturi
+          </div>
+        </div>
+        <button
+          onClick={() =>
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            })
+          }
+          style={{
+            fontSize: "2.5rem",
+            paddingInline: "0.5rem",
+            marginLeft: "auto",
+            border: 0,
+            outline: 0,
+            backgroundColor: "transparent",
+          }}
+        >
+          ⬇️
+        </button>
       </div>
     </>
   );

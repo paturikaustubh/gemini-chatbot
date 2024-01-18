@@ -44,11 +44,11 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  backdrop-filter: blur(3px);
-  padding-block: 0.8rem;
   display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  margin-top: 1rem;
 }
 
 .__input-field {
@@ -56,6 +56,8 @@
   gap: 1rem;
   width: 75%;
   background-color: #0a0a0a;
+  justify-content: center;
+  align-items: center;
   margin-inline: auto;
   padding-inline: 0.7rem;
   padding-block: 0.5rem;
