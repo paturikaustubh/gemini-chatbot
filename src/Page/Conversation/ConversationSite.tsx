@@ -5,7 +5,7 @@ import { ChatContext } from "../../Data/Context";
 import { useAiResponse } from "../../Gemini/Response";
 import { Loading } from "../../Components/Loading Animation/Loading";
 import "./styles.css";
-import Logo from "/Gemini Logo No BG.png";
+import Logo from "/Gemini Logo.png";
 
 export function Conversation() {
   const sendMessage = useAiResponse();
@@ -45,14 +45,7 @@ export function Conversation() {
                 <p>{message.parts.toString()}</p>
               </div>
             ) : (
-              <div
-                className={
-                  message.role === "user"
-                    ? "__user-message"
-                    : "__model-response"
-                }
-                key={indx}
-              >
+              <div className="__model-response" key={indx}>
                 <Markdown>{message.parts.toString()}</Markdown>
               </div>
             )

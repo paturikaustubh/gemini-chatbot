@@ -20,8 +20,9 @@
 .__model-response {
   border-radius: 0.3rem;
   padding-inline: 0.8rem;
+  padding-block: 0;
   max-width: 55%;
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
 .__user-message {
@@ -29,10 +30,10 @@
   margin-left: auto;
   white-space: pre-line;
 }
-/* .__user-message > *, */
-/* .__model-response > * {
-  margin: 0.3rem;
-} */
+.__user-message > p,
+.__model-response > p {
+  margin-block: 0.6em;
+}
 
 .__model-response {
   background-color: #202020;
