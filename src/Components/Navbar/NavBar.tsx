@@ -7,7 +7,7 @@ export function NavBar() {
   return (
     <nav>
       <span className="heading">
-        Google <span className="__gemini">Gemini⚡</span>
+        Google <span className="__gemini">Gemini</span>
       </span>
       <span className="title">
         <span className="med-screen-show">Gemini-</span>Chat
