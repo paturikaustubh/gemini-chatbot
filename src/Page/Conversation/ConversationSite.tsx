@@ -123,28 +123,7 @@ export function Conversation() {
               <Loading />
             )}
           </form>
-          <div style={{ fontSize: "0.8rem", marginBlock: "5px" }}>
-            Developed by Kaustubh Paturi
-          </div>
         </div>
-        <button
-          onClick={() =>
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: "smooth",
-            })
-          }
-          style={{
-            fontSize: "2.5rem",
-            paddingInline: "0.5rem",
-            marginLeft: "auto",
-            border: 0,
-            outline: 0,
-            backgroundColor: "transparent",
-          }}
-        >
-          ⬇️
-        </button>
       </div>
     </>
   );
