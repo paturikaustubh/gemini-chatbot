@@ -13,7 +13,7 @@ export function useAiResponse() {
   const { chatSequence, setChatSequence, setShowLoading } =
     useContext(ChatContext);
   const genAI = new GoogleGenerativeAI(
-    "AIzaSyApOcN3i2jU26amZ86Sv3bpe327G92MpEk"
+    "AIzaSyB-WWjKc4_ukDlpuL6EvmPd74fioL-gGi4"
   );
 
   return async function aiMesage(msg: string) {
@@ -50,7 +50,8 @@ export function useAiResponse() {
         ...prevVals,
         {
           role: "model",
-          parts: "Text not available. Response was blocked due to SAFETY",
+          parts:
+            "There was an error while generating response. Please check the console for more info.",
         },
       ]);
       setShowLoading(false);

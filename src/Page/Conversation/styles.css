@@ -50,6 +50,8 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding-block: 0.5rem 1%;
+  backdrop-filter: blur(3px);
 }
 
 .__input-field {
